@@ -1,0 +1,22 @@
+This plugin is very much inspired by Tim Pope's pathogen and extends
+it with a functionality of loading seldomly used plugins later.
+
+Install in ~/.vim/autoload (or ~\vimfiles\autoload) together with pathogen
+(http://www.vim.org/scripts/script.php?script_id=2332).
+
+You can use pathogen's settings to configure ipi, e.g. disable plugins
+completely.
+
+For loading plugins later, install them in ~/.vim/ipi (or
+~\vimfiles\ipi). Adding `call ipi#inspect()` to your .vimrc will create a
+list of plugins that can be loaded later. For loading a single or multiple
+plugins use the LL command:
+
+Load gundo plugin later:
+:LL gundo
+
+Load gundo and speeddating plugins later:
+:LL gundo speedating
+
+Load all known plugins later:
+:LL!
