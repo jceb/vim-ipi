@@ -110,6 +110,8 @@ function! ipi#source(path) abort
 		for f in pathogen#glob(a:path.sep.'*.vim')
 			if filereadable(f)
 				exec 'source '.fnameescape(f)
+      else
+        call ipi#source(f)
 			endif
 		endfor
 	endif
