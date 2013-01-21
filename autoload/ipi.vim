@@ -135,10 +135,18 @@ function! ipi#load(path, plugin) abort
 	call filter(rtp,'v:val[0:strlen(path)-1] !=# path')
 	let &rtp = pathogen#join(pathogen#uniq(before + rtp + after))
 
+	if filereadable(path.sep.'custom.vim')
+		exec 'source '.fnameescape(path.sep.'custom.vim')
+	endif
+
 	call ipi#source(path.sep.'plugin')
 	call ipi#source(path.sep.'ftdetect')
 	call ipi#source(path.sep.'after'.sep.'plugin')
 	call ipi#source(path.sep.'after'.sep.'ftdetect')
+
+	if filereadable(path.sep.'custom_after.vim')
+		exec 'source '.fnameescape(path.sep.'custom_after.vim')
+	endif
 
 	" execute autocommand VimEnter for known plugins
 	let p = substitute(tolower(a:plugin), '[^a-z]', '', 'g')
